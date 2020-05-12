@@ -1,0 +1,11 @@
+{
+    "map_name": "Ocean Lab",
+    "map_path": "map_files/OceanStation",
+    "map_file": "Oceanlab.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_box",
+	    "emergency": "emergency_box"
+    }
+}
