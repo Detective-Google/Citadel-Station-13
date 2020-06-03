@@ -43,6 +43,10 @@ endmap
 map oceanlab
 endmap
 
+map snaxi
+	minplayers 25
+endmap
+
 map runtimestation
 endmap
 
