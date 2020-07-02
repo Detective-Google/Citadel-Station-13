@@ -194,7 +194,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 31)
 		S["wing_color"]			>> features["wings_color"]
 		S["horn_color"]			>> features["horns_color"]
-	
+
 	if(current_version < 33)
 		features["flavor_text"] = html_encode(features["flavor_text"])
 		features["silicon_flavor_text"] = html_encode(features["silicon_flavor_text"])
@@ -325,6 +325,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	modless_key_bindings 	= sanitize_islist(modless_key_bindings, list())
 
 	verify_keybindings_valid()		// one of these days this will runtime and you'll be glad that i put it in a different proc so no one gets their saves wiped
+	sanitize_speech_and_tongue()
 
 	return 1
 
@@ -345,6 +346,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		var/bindname = modless_key_bindings[key]
 		if(!GLOB.keybindings_by_name[bindname])
 			modless_key_bindings -= key
+
+/datum/preferences/proc/sanitize_speech_and_tongue()
+	if(!(custom_speech_verb in GLOB.speech_verbs))
+		custom_speech_verb = GLOB.speech_verbs[1]
+	if(!(custom_tongue in GLOB.roundstart_tongues))
+		custom_tongue = GLOB.roundstart_tongues[1]
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
@@ -479,6 +486,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["backbag"]				>> backbag
 	S["jumpsuit_style"]			>> jumpsuit_style
 	S["uplink_loc"]				>> uplink_spawn_loc
+	S["custom_speech_verb"]		>> custom_speech_verb
+	S["custom_tongue"]			>> custom_tongue
 	S["feature_mcolor"]					>> features["mcolor"]
 	S["feature_lizard_tail"]			>> features["tail_lizard"]
 	S["feature_lizard_snout"]			>> features["snout"]
@@ -756,6 +765,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["jumpsuit_style"]			, jumpsuit_style)
 	WRITE_FILE(S["uplink_loc"]				, uplink_spawn_loc)
 	WRITE_FILE(S["species"]					, pref_species.id)
+	WRITE_FILE(S["custom_speech_verb"]		, custom_speech_verb)
+	WRITE_FILE(S["custom_tongue"]			, custom_tongue)
 	WRITE_FILE(S["feature_mcolor"]					, features["mcolor"])
 	WRITE_FILE(S["feature_lizard_tail"]				, features["tail_lizard"])
 	WRITE_FILE(S["feature_human_tail"]				, features["tail_human"])
