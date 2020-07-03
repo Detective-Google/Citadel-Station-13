@@ -470,6 +470,10 @@
 	suffix = "box"
 	name = "supply shuttle (Box)"
 
+/datum/map_template/shuttle/cargo/asteroid
+	suffix = "asteroid"
+	name = "supply shuttle (Asteroid)"
+
 /datum/map_template/shuttle/cargo/kilo
 	suffix = "kilo"
 	name = "supply shuttle (Kilo)"

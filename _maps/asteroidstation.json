@@ -3,9 +3,9 @@
     "map_path": "map_files/AsteroidStation",
     "map_file": "AsteroidStation2.dmm",
     "shuttles": {
-	    "cargo": "cargo_box",
+	    "cargo": "cargo_asteroid",
 	    "ferry": "ferry_fancy",
-	    "whiteship": "whiteship_box",
-	    "emergency": "emergency_box"
+	    "whiteship": "whiteship_meta",
+	    "emergency": "emergency_asteroid"
     }
 }
