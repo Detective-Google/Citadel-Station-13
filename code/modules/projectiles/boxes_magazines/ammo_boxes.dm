@@ -47,25 +47,13 @@
 
 /obj/item/ammo_box/c38/dumdum
 	name = "speed loader (.38 DumDum)"
-	desc = "Designed to quickly reload revolvers. DumDum bullets shatter on impact and shred the target's innards, likely getting caught inside."
+	desc = "Designed to quickly reload revolvers. These rounds expand on impact, allowing them to shred the target and cause massive bleeding. Very weak against armor and distant targets."
 	ammo_type = /obj/item/ammo_casing/c38/dumdum
 
 /obj/item/ammo_box/c38/match
 	name = "speed loader (.38 Match)"
 	desc = "Designed to quickly reload revolvers. These rounds are manufactured within extremely tight tolerances, making them easy to show off trickshots with."
 	ammo_type = /obj/item/ammo_casing/c38/match
-
-/obj/item/ammo_box/c32mm
-	name = "ammo box (.32 acp)"
-	desc = "Lethal .32 acp bullets, there's forty in the box."
-	ammo_type = /obj/item/ammo_casing/c32acp
-	max_ammo = 40
-
-/obj/item/ammo_box/r32mm
-	name = "ammo box (rubber .32 acp)"
-	desc = "Non-lethal .32 acp bullets, there's forty in the box."
-	ammo_type = /obj/item/ammo_casing/r32acp
-	max_ammo = 40
 
 /obj/item/ammo_box/c9mm
 	name = "ammo box (9mm)"
