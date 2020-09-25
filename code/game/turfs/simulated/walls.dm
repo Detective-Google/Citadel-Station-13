@@ -138,7 +138,7 @@
 	if(prob(hardness))
 		playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
-		hulk_recoil(arm, user)
+		//hulk_recoil(arm, user)		// citadel edit - no, hulks are already subject to stamina combat
 		dismantle_wall(1)
 
 	else
@@ -324,5 +324,10 @@
 		dent_decals = list(decal)
 
 	add_overlay(dent_decals)
+
+/turf/closed/wall/rust_heretic_act()
+	if(prob(70))
+		new /obj/effect/temp_visual/glowing_rune(src)
+	ChangeTurf(/turf/closed/wall/rust)
 
 #undef MAX_DENT_DECALS
