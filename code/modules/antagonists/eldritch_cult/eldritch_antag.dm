@@ -31,6 +31,7 @@
 /datum/antagonist/heretic/on_gain()
 	var/mob/living/current = owner.current
 	owner.teach_crafting_recipe(/datum/crafting_recipe/heretic/codex)
+	owner.special_role = ROLE_HERETIC
 	if(ishuman(current))
 		forge_primary_objectives()
 		gain_knowledge(/datum/eldritch_knowledge/spell/basic)
@@ -49,7 +50,7 @@
 	for(var/X in researched_knowledge)
 		var/datum/eldritch_knowledge/EK = researched_knowledge[X]
 		EK.on_lose(owner.current)
-
+	owner.special_role = null
 	if(!silent)
 		to_chat(owner.current, "<span class='userdanger'>Your mind begins to flare as the otherwordly knowledge escapes your grasp!</span>")
 		owner.current.log_message("has renounced the cult of the old ones!", LOG_ATTACK, color="#960000")
@@ -75,7 +76,7 @@
 
 	var/T = new item_path(H)
 	var/item_name = initial(item_path.name)
-	var/where = H.equip_in_one_of_slots(T, slots)
+	var/where = H.equip_in_one_of_slots(T, slots, critical = TRUE)
 	if(!where)
 		to_chat(H, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
 		return FALSE
@@ -98,7 +99,7 @@
 		var/pck = pick("assasinate","protect")
 		switch(pck)
 			if("assasinate")
-				var/datum/objective/assassinate/A = new
+				var/datum/objective/assassinate/once/A = new
 				A.owner = owner
 				var/list/owners = A.get_owners()
 				A.find_target(owners,protection)

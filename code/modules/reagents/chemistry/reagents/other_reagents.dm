@@ -781,6 +781,12 @@
 	race = /datum/species/lizard/ashwalker
 	mutationtext = "<span class='danger'>The pain subsides. You feel... savage.</span>"
 
+/datum/reagent/mutationtoxin/arachnid
+	name = "Arachnid Mutation Toxin"
+	description = "A glowing toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/arachnid
+	mutationtext = "<span class='danger'>The pain subsides. You feel... silky.</span>"
 
 //DANGEROUS RACES
 /datum/reagent/mutationtoxin/shadow
@@ -1119,8 +1125,8 @@
 /datum/reagent/space_cleaner/sterilizine/reaction_obj(obj/O, reac_volume)
 	if(istype(O, /obj/item/stack/medical/gauze))
 		var/obj/item/stack/medical/gauze/G = O
-		reac_volume = min((reac_volume / 10), G.amount)
-		new/obj/item/stack/medical/gauze/adv(get_turf(G), reac_volume)
+		reac_volume = min((reac_volume / 5), G.amount)
+		new /obj/item/stack/medical/gauze/adv(get_turf(G), reac_volume)
 		G.use(reac_volume)
 
 
@@ -2522,7 +2528,7 @@
 		M.adjustStaminaLoss(-0.25*REM) // the more wounds, the more stamina regen
 	..()
 
-datum/reagent/eldritch
+/datum/reagent/eldritch
 	name = "Eldritch Essence"
 	description = "Strange liquid that defies the laws of physics"
 	taste_description = "Ag'hsj'saje'sh"
